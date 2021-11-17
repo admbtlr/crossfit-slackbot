@@ -1,19 +1,19 @@
 // Require the Bolt package (github.com/slackapi/bolt)
-const { App } = require("@slack/bolt");
+const { App } = require("@slack/bolt")
 // Require the Node Slack SDK package (github.com/slackapi/node-slack-sdk)
-const { WebClient, LogLevel } = require("@slack/web-api");
+const { WebClient, LogLevel } = require("@slack/web-api")
 
 // WebClient insantiates a client that can call API methods
 // When using Bolt, you can use either `app.client` or the `client` passed to listeners.
 const client = new WebClient(process.env.OAUTH_TOKEN, {
   // LogLevel can be imported and used to make debugging simpler
   logLevel: LogLevel.DEBUG
-});
+})
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
   signingSecret: process.env.SLACK_SIGNING_SECRET
-});
+})
 
 const exercises = [
   {
@@ -40,15 +40,15 @@ const exercises = [
     max: 30,
     unit: 'seconds'
   },  
-];
+]
 
-const channel = 'C02L7KPT7T6';
+const channel = 'C02L7KPT7T6'
 
-(async () => {
+const runBot = async () => {
   // Start your app
-  await app.start(process.env.PORT || 3000);
+  await app.start(process.env.PORT || 3000)
 
-  console.log('⚡️ Bolt app is running!');
+  console.log('crossfit bot is running!')
   
   const ch = await client.conversations.members({ channel })
   console.log(ch.members)
@@ -87,8 +87,16 @@ const channel = 'C02L7KPT7T6';
     
     const exercise = exercises[Math.floor(Math.random() * exercises.length)]
     const reps = Math.floor(Math.random() * (exercise.max - exercise.min)) + exercise.min
-    const text = `${reps}${(exercise.unit && ' ' + exercise.unit)} ${exercise.name} _now_ <@${present[0].id}>!`
-    // await client.chat.postMessage({ channel, text })
+    const victimList = victims.map(v => `<@${v.id}>`).join(', ')
+    const text = `${reps}${(exercise.unit && ' ' + exercise.unit)} ${exercise.name} _now_ ${victimList}!`
+    await client.chat.postMessage({ channel, text })
     console.log(text)    
   }
-})();
+
+  console.log('Done')
+  return
+}
+
+runBot()
+  .then(_ => process.exit(0))
+  .catch(_ => process.exit(1))
