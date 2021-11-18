@@ -29,7 +29,7 @@ const exercises = [
     unit: ''
   },
   {
-    name: 'crouches',
+    name: 'squats',
     min: 10,
     max: 30,
     unit: ''
