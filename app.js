@@ -40,6 +40,24 @@ const exercises = [
     max: 30,
     unit: 'seconds'
   },  
+  {
+    name: 'plank',
+    min: 20,
+    max: 60,
+    unit: 'seconds'
+  },  
+  {
+    name: 'glute bridges',
+    min: 10,
+    max: 30,
+    unit: ''
+  },  
+  {
+    name: 'walkouts',
+    min: 10,
+    max: 30,
+    unit: ''
+  },  
 ]
 
 const channel = 'C02L7KPT7T6'
