@@ -54,8 +54,8 @@ const exercises = [
   },  
   {
     name: 'walkouts',
-    min: 10,
-    max: 30,
+    min: 5,
+    max: 10,
     unit: ''
   },  
 ]
@@ -85,7 +85,9 @@ const runBot = async () => {
   }
 
   const getVictims = (users) => {
-    const num = Math.ceil(users.length / 3)
+    const num = user.length > 3 ?
+      Math.round(users.length / 3) :
+      1
     let indexes = []
     for (let i = 0; i < num; i++) {
       let gotOne = false
