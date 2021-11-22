@@ -61,6 +61,7 @@ const exercises = [
 ]
 
 const channel = 'C02L7KPT7T6'
+const botId = 'U01JMTJ7THU'
 
 const runBot = async () => {
   // Start your app
@@ -69,13 +70,12 @@ const runBot = async () => {
   console.log('crossfit bot is running!')
   
   const ch = await client.conversations.members({ channel })
-  console.log(ch.members)
   let present = []
   let user
   for (user of ch.members) {
     const details = await client.users.info({ user })
     const presence = await client.users.getPresence({ user })
-    if (presence.presence === 'active' ) {
+    if (presence.presence === 'active' && details.user.id !== botId) {
       present.push({
         id: details.user.id,
         name: details.user.profile.display_name,
