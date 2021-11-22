@@ -83,6 +83,8 @@ const runBot = async () => {
       })      
     }
   }
+  
+  console.log(JSON.stringify(present))
 
   const getVictims = (users) => {
     const num = user.length > 3 ?
