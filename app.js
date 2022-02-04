@@ -60,8 +60,8 @@ const exercises = [
   },
   {
     name: 'burpees',
-    min: 3
-    max: 12
+    min: 3,
+    max: 12,
     unit: ''
   },
 ]
