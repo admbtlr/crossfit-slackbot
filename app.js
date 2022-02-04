@@ -57,7 +57,13 @@ const exercises = [
     min: 5,
     max: 10,
     unit: ''
-  },  
+  },
+  {
+    name: 'burpees',
+    min: 3
+    max: 12
+    unit: ''
+  },
 ]
 
 const channel = 'C02L7KPT7T6'
