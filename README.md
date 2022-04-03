@@ -1,5 +1,6 @@
-Bolt app template
-=================
+# Crossfit Bot
+
+## Built from the Bolt app template
 
 [Bolt](https://slack.dev/bolt) is our framework that lets you build JavaScript-based Slack apps in a flash.
 
